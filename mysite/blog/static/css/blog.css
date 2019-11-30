@@ -2,10 +2,12 @@ body {
     margin:0;
     padding:0;
     font-family:helvetica, sans-serif; 
+    background:#1a1a1a; 
+    color:#f1f1f1; 
 }
 
 a { 
-    color:#00abff;
+    color:#bb0000;
     text-decoration:none; 
 }
 
@@ -30,7 +32,7 @@ h2 {
     float:right;
     width:30%;
     padding:10px;
-    background:#f7e6e6; 
+    background:#2c2c2c; 
     height:100%;
 }
 
@@ -41,31 +43,46 @@ p.date {
     font-style: italic; 
 }
 
+h1.post-title {
+    color:#bb0000;
+}
+
 /* pagination */
 .pagination { 
     margin:40px 0; 
     font-weight:bold;
 }
 
+a:hover {
+    color:#7e0000;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background:#7e0000;
+    cursor: pointer;
+}
+
 /* forms */
 label { 
     float:left;
     clear:both;
-    color:#333;
+    color:#bb0000;
     margin-bottom:4px; 
 }
 input, textarea { 
     clear:both;
     float:left;
     margin:0 0 10px;
-    background:#ededed;
+    background:#2c2c2c;
+    color:#fff;
     border:0;
     padding:6px 10px;
     font-size:12px;
 }
 input[type=submit] {
     font-weight:bold;
-    background:#00abff;
+    background:#2c2c2c;
     color:#fff;
     padding:10px 20px;
     font-size:14px;
@@ -83,10 +100,10 @@ input[type=submit] {
     padding:10px;
 }
 .comment:nth-child(even) {
-    background:#efefef;
+    background:#2c2c2c;
 }
 .comment .info {
     font-weight:bold;
     font-size:12px;
-    color:#666;
+    color:#a5a5a5;
 }
