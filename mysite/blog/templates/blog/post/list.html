@@ -10,6 +10,7 @@
         {{ post.title }}
       </a>
     </h2>
+    <p class="tags">{% if post.tags.all|length > 0 %} Tags: {{ post.tags.all|join:", " }} {% else %} No tags {% endif %}</p>
     <p class="date">
       Опубликованно {{ post.publish }} Автор: {{ post.author }}
     </p>
