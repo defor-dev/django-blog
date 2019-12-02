@@ -43,6 +43,10 @@ p.date {
     font-style: italic; 
 }
 
+p.tags {
+    color:#bb0000;
+}
+
 h1.post-title {
     color:#bb0000;
 }

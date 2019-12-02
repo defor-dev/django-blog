@@ -4,6 +4,7 @@
  
 {% block content %} 
   <h1 class="post-title">{{ post.title }}</h1> 
+  <p class="tags">{% if post.tags.all|length > 0 %} Tags: {{ post.tags.all|join:", " }} {% else %} No tags {% endif %}</p>
   <p class="date"> 
     Publish {{ post.publish }} by {{ post.author }} 
   </p> 
