@@ -44,7 +44,7 @@ p.date {
 }
 
 p.tags {
-    color:#7e0000;
+    color:#bb0000;
 }
 
 h1.post-title {
@@ -60,10 +60,6 @@ h1.post-title {
 a:hover {
     color:#7e0000;
     cursor: pointer;
-}
-
-p.tags:hover {
-    color:#bb0000;
 }
 
 input[type=submit]:hover {
