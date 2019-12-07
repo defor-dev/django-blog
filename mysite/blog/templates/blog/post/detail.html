@@ -33,7 +33,11 @@
 
   <!-- Добавление комментария -->
   {% if new_comment %}
-	  <h2>Your commnent has been added.</h2> 
+    <h2>
+      <a href="{{ request.get_full_path }}">
+        Add one more comment
+      </a>
+    </h2>
   {% else %}
 	  <h2>Add a new comment</h2>
 	  <form action="." method="post">
