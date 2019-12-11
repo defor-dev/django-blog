@@ -1,3 +1,4 @@
+{% load blog_tags %}
 {% load static %}
 <!DOCTYPE html>
 <html>
@@ -15,6 +16,7 @@
       <a href="{% url "blog:post_list" %}">Blog</a>
     </h2>
       <p>Мой блог на Django</p>
+      <p>Всего постов: {% total_posts %}</p>
   </div>
 </body>
 </html>

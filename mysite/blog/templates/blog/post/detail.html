@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %} 
+{% load static %}
  
 {% block title %}{{ post.title }}{% endblock %} 
  
@@ -15,7 +16,7 @@
 
   <!-- Кол-во комментариев к посту  -->
   {% with comments.count as total_comments %}
-    <h2>{{ total_comments }} comment{{ total_comments|pluralize }}</h2>
+    <h2><img src="{% static "/img/comment-icon.png" %}" alt="comments-icon" class="list-comments-icon"> {{ total_comments }} comment{{ total_comments|pluralize }}</h2>
   {% endwith %}
 
   <!-- Отображение комментариев -->
