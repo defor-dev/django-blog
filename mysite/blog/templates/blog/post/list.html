@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load static %}
  
 {% block title %}My Blog{% endblock %}
  
@@ -30,6 +31,11 @@
       Publish {{ post.publish }} by {{ post.author }}
     </p>
     {{ post.body|truncatewords:30|linebreaks }}
+
+    {% with post.comments.count as total_comments %}
+      <p class="comments-count"><img src="{% static "/img/comment-icon.png" %}" alt="comments-icon" class="list-comments-icon"> {{ total_comments }} comment{{ total_comments|pluralize }}</p>
+    {% endwith %}
+
   {% endfor %}
 
   {% include "pagination.html" with page=posts %}
