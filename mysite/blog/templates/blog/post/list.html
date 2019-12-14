@@ -1,4 +1,5 @@
 {% extends "blog/base.html" %}
+{% load blog_tags %}
 {% load static %}
  
 {% block title %}My Blog{% endblock %}
@@ -30,7 +31,7 @@
     <p class="date">
       Publish {{ post.publish }} by {{ post.author }}
     </p>
-    {{ post.body|truncatewords:30|linebreaks }}
+    {{ post.body|markdown|truncatewords_html:30 }}
 
     {% with post.comments.count as total_comments %}
       <p class="comments-count"><img src="{% static "/img/comment-icon.png" %}" alt="comments-icon" class="list-comments-icon"> {{ total_comments }} comment{{ total_comments|pluralize }}</p>
