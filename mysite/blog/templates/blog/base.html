@@ -19,7 +19,8 @@
 
     <p>Мой блог на Django</p>
     <p>Всего постов: {% total_posts %}</p>
-    <p><a href="{% url "blog:post_feed" %}">RSS</a></p>
+    <p class="img-text"><img src="{% static "/img/search-icon.png" %}" alt="search-icon" class="search-icon"><a href="{% url "blog:post_search" %}">Search</a></p>
+    <p class="img-text"><img src="{% static "/img/rss-icon.png" %}" alt="rss-icon" class="rss-icon"><a href="{% url "blog:post_feed" %}">RSS</a></p>
     
     <h3>Latest posts</h3>
     {% show_latest_posts 3 %}
