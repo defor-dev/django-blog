@@ -1,4 +1,5 @@
-from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import TrigramSimilarity
+from django.db.models.functions import Greatest
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.core.mail import send_mail
@@ -88,8 +89,11 @@ def post_search(request):
     if form.is_valid():
         query = form.cleaned_data['query']
         results = Post.objects.annotate(        
-                search=SearchVector('title', 'body'),
-        ).filter(search=query)
+            similarity=Greatest(
+                TrigramSimilarity('title', query),
+                TrigramSimilarity('body', query),
+            )
+        ).filter(similarity__gt=0.3).order_by('-similarity')
         
     return render(request, 'blog/post/search.html', {'form': form,      
                                                      'query': query,
