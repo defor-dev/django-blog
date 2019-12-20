@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -37,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.postgres',
     'blog.apps.BlogConfig',
     'taggit',
 ]
@@ -75,11 +79,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { 
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.postgresql', 'NAME': 'blog',
+        'USER': 'blog',
+        'PASSWORD': '1234',
+    } 
 }
 
 
@@ -123,6 +128,6 @@ STATIC_URL = '/static/'
 
 EMAIL_HOST = 'smtp.gmail.com' 
 EMAIL_HOST_USER = 'deforworks@gmail.com' 
-EMAIL_HOST_PASSWORD = 'Defor8403morj?' 
+EMAIL_HOST_PASSWORD = '1234'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True

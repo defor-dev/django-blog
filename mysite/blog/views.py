@@ -1,10 +1,12 @@
+from django.contrib.postgres.search import TrigramSimilarity
+from django.db.models.functions import Greatest
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView
 from django.core.mail import send_mail
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from taggit.models import Tag
 from .models import Post, Comment
-from .forms import EmailPostForm, CommentForm
+from .forms import EmailPostForm, CommentForm, SearchForm
 
 class PostListView(ListView):
     queryset = Post.published.all()
@@ -77,3 +79,22 @@ def post_share(request, post_id):
         form = EmailPostForm()
         return render(request, 'blog/post/share.html',
                         {'post': post, 'form': form, 'sent': sent})
+
+def post_search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+    if form.is_valid():
+        query = form.cleaned_data['query']
+        results = Post.objects.annotate(        
+            similarity=Greatest(
+                TrigramSimilarity('title', query),
+                TrigramSimilarity('body', query),
+            )
+        ).filter(similarity__gt=0.3).order_by('-similarity')
+        
+    return render(request, 'blog/post/search.html', {'form': form,      
+                                                     'query': query,
+                                                     'results': results})
